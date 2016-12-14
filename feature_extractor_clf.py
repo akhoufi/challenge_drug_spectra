@@ -11,6 +11,6 @@ class FeatureExtractorClf():
 
     def transform(self, X_df):
         XX = np.array([np.array(dd) for dd in X_df['spectra']])
-#        XX = normalize(XX)
-#        XX = scale(XX)
+        XX = normalize(XX)
+        XX = scale(XX, with_std=False)
         return XX

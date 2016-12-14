@@ -1,5 +1,6 @@
 import numpy as np
 # import pandas as pd
+from sklearn.preprocessing import scale, normalize
 
 
 labels = np.array(['A', 'B', 'Q', 'R'])
@@ -16,4 +17,6 @@ class FeatureExtractorReg():
         XX -= np.median(XX, axis=1)[:, None]
         XX /= np.sqrt(np.sum(XX ** 2, axis=1))[:, None]
         XX = np.concatenate([XX, X_df[labels].values], axis=1)
+        XX = normalize(XX)
+        XX = scale(XX, with_std=False)
         return XX
